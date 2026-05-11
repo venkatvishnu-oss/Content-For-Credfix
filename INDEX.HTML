@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CredFix 15-Day Content Plan</title>
+    <style>
+        /* ─── Brand Colors & Variables ─── */
+        :root {
+            --navy: #0A1628;
+            --blue: #1A3A6B;
+            --accent: #2563EB;
+            --gold: #F59E0B;
+            --light-bg: #EFF6FF;
+            --teal: #0EA5E9;
+            --green: #10B981;
+            --red: #EF4444;
+            --gray: #6B7280;
+            --white: #FFFFFF;
+            --soft-gray: #F3F4F6;
+            --reel-clr: #7C3AED;
+            --carousel-clr: #0EA5E9;
+            --static-clr: #10B981;
+            --text-dark: #1F2937;
+        }
+
+        /* ─── Global Styles ─── */
+        body {
+            background-color: #e2e8f0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .document {
+            max-width: 800px; /* Approximates A4 width on web */
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* ─── Page Containers ─── */
+        .page {
+            padding: 40px;
+            page-break-after: always;
+            border-bottom: 2px dashed #cbd5e1;
+        }
+        .page:last-child {
+            border-bottom: none;
+        }
+
+        /* ─── Cover Page ─── */
+        .cover {
+            background-color: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 40px;
+            border-radius: 8px;
+        }
+        .cover h3 { color: var(--gold); letter-spacing: 8px; font-size: 14px; margin-bottom: 5px;}
+        .cover h4 { color: #94A3B8; letter-spacing: 5px; font-size: 12px; margin-top: 0;}
+        .cover h1 { font-size: 36px; margin: 40px 0 10px; line-height: 1.2;}
+        .cover h1 span { color: var(--gold); font-size: 42px; display: block;}
+        .cover .subtitle { color: #CBD5E1; font-size: 16px; margin-top: 20px;}
+        .cover .subtitle-2 { color: #94A3B8; font-size: 14px; margin-top: 5px;}
+        .cover hr { border-color: var(--gold); width: 60%; margin: 40px auto; opacity: 0.5;}
+        .cover hr.dark { border-color: #334155; }
+        .cover .services-title { color: var(--gold); font-size: 12px; letter-spacing: 4px; font-weight: bold;}
+        .cover .services-list { font-size: 14px; line-height: 1.8; margin-top: 10px;}
+        .cover .stats { color: var(--teal); font-weight: bold; font-size: 14px; margin-top: 30px;}
+        .cover .stats span { color: #94A3B8; font-weight: normal; display: block; margin-top: 5px;}
+        .cover .url { color: #475569; font-size: 12px; margin-top: 50px;}
+
+        /* ─── Table of Contents ─── */
+        .toc-header { color: var(--navy); text-align: center; font-size: 24px; margin-bottom: 20px;}
+        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        th, td { border: 1px solid #D1D5DB; padding: 10px; text-align: center; }
+        th { background-color: var(--navy); color: var(--white); font-weight: bold; }
+        td { color: var(--navy); }
+        td:nth-child(2) { text-align: left; font-weight: bold;}
+        .row-alt { background-color: var(--soft-gray); }
+        .row-highlight { background-color: #DBEAFE; }
+
+        .legend { display: flex; justify-content: space-between; margin-top: 30px; gap: 10px;}
+        .legend-item { flex: 1; padding: 12px; text-align: center; font-size: 11px; font-weight: bold; border-radius: 4px; }
+        .leg-reel { background: #F3E8FF; border: 1px solid var(--reel-clr); color: var(--reel-clr); }
+        .leg-carousel { background: #E0F2FE; border: 1px solid var(--carousel-clr); color: var(--carousel-clr); }
+        .leg-static { background: #D1FAE5; border: 1px solid var(--static-clr); color: var(--static-clr); }
+
+        /* ─── Content Days ─── */
+        .day-header {
+            background-color: var(--navy);
+            color: var(--gold);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .day-header h2 { margin: 0; font-size: 28px; }
+        .day-header span { color: #CBD5E1; font-size: 14px; font-weight: normal;}
+
+        .post { margin-bottom: 40px; }
+        .post-header {
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .post-header.reel { background-color: var(--reel-clr); }
+        .post-header.carousel { background-color: var(--carousel-clr); }
+        .post-header.static { background-color: var(--static-clr); }
+        .post-header .type { font-size: 11px; font-weight: bold; opacity: 0.9;}
+        .post-header .title { font-size: 16px; font-weight: bold; margin-top: 4px;}
+
+        .service-badge { font-style: italic; color: var(--gray); font-size: 11px; margin-bottom: 15px; }
+
+        /* Reel Specifics */
+        .info-box { background: var(--blue); color: var(--white); padding: 12px; border-radius: 4px; font-size: 12px; margin-bottom: 10px; display: flex; justify-content: space-between;}
+        .info-box span.highlight { color: var(--gold); }
+        .scene-box { background: #FFF7ED; border: 1px solid var(--gold); padding: 12px; border-radius: 4px; font-size: 12px; font-style: italic; color: var(--text-dark); margin-bottom: 15px;}
+        
+        .script-section { margin-bottom: 15px; }
+        .script-header { padding: 6px 12px; color: var(--white); font-weight: bold; font-size: 11px; border-radius: 4px; margin-bottom: 5px; }
+        .script-header.hook { background-color: var(--red); }
+        .script-header.content { background-color: var(--navy); }
+        .script-header.cta { background-color: var(--green); }
+        .script-header.hindi { background-color: var(--reel-clr); }
+        
+        .script-lines { margin: 0; padding-left: 15px; list-style-type: none; font-size: 12px; line-height: 1.6;}
+        .script-lines li::before { content: "• "; color: #9CA3AF; }
+
+        .lang-title { font-weight: bold; font-size: 12px; margin: 20px 0 10px; }
+        .lang-en { color: var(--accent); }
+        .lang-hi { color: var(--reel-clr); }
+        .lang-kn { color: var(--green); }
+
+        /* Carousel Specifics */
+        .carousel-note { color: var(--carousel-clr); font-weight: bold; font-size: 12px; margin-bottom: 10px;}
+        .slide { border: 1px solid var(--carousel-clr); border-radius: 4px; margin-bottom: 8px; overflow: hidden;}
+        .slide-header { background: #E0F2FE; color: #1E3A5F; padding: 6px 12px; font-weight: bold; font-size: 11px;}
+        .slide-body { background: var(--white); padding: 10px 12px; font-size: 12px; line-height: 1.5; white-space: pre-wrap;}
+        .slide.cover .slide-header, .slide.cta .slide-header { background: var(--carousel-clr); color: var(--white); }
+        .slide.cover .slide-body, .slide.cta .slide-body { background: #E0F2FE; color: var(--text-dark); }
+
+        /* Static Specifics */
+        .visual-concept { background: #FFF7ED; border: 1px solid var(--gold); padding: 12px; border-radius: 4px; font-size: 12px; font-style: italic; margin-bottom: 15px;}
+        .static-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .static-table td { border: 1px solid #A7F3D0; padding: 8px 12px; text-align: left; font-size: 12px; vertical-align: middle;}
+        .static-table td:first-child { background: var(--static-clr); color: var(--white); font-weight: bold; width: 30%;}
+        .static-table td:last-child { background: #D1FAE5; color: var(--text-dark); }
+
+        /* Common Elements */
+        .caption-box { background: #F0FDF4; border: 1px solid var(--green); padding: 15px; border-radius: 4px; font-size: 12px; line-height: 1.5; margin-bottom: 10px;}
+        .hashtags { color: var(--teal); font-size: 11px; }
+        .visual-dir { background: var(--soft-gray); padding: 10px; font-size: 11px; font-style: italic; color: var(--gray); border-radius: 4px; margin-bottom: 10px;}
+
+        hr.divider { border: 0; height: 1px; background: #E5E7EB; margin: 30px 0; }
+    </style>
+</head>
+<body>
+
+<div class="document">
+
+    <div class="page">
+        <div class="cover">
+            <h3>C R E D F I X</h3>
+            <h4>SERVICES</h4>
+            <br>
+            <h1>15-DAY SOCIAL MEDIA<br><span>CONTENT PLAN</span></h1>
+            <div class="subtitle">30 Ready-to-Use Posts &nbsp;|&nbsp; Reels, Carousels & Static</div>
+            <div class="subtitle-2">Reel Scripts in Hindi & Kannada &nbsp;|&nbsp; Cinematic Storytelling Format</div>
+            
+            <hr>
+            
+            <div class="services-title">SERVICES COVERED</div>
+            <div class="services-list">
+                Debt Navigator &nbsp;•&nbsp; Debt Shield &nbsp;•&nbsp; Debt Coaching<br>
+                Legal Consultation &nbsp;•&nbsp; Legal Representation<br>
+                Harassment Protection &nbsp;•&nbsp; Debt Settlement<br>
+                Credit Health Rebuilding
+            </div>
+            
+            <hr class="dark">
+            
+            <div class="stats">
+                10 Reels &nbsp;|&nbsp; 10 Carousels &nbsp;|&nbsp; 10 Static Posts
+                <span>2 Posts Per Day &nbsp;|&nbsp; Indian Market Optimized</span>
+            </div>
+            
+            <div class="url">credfix.in</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <h2 class="toc-header">CONTENT CALENDAR OVERVIEW</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Theme</th>
+                    <th>Post 1</th>
+                    <th>Post 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Debt Navigator — Know Your Debt</td><td>🎬 Loan Rejected (Reel)</td><td>📱 5 Warning Signs (Carousel)</td></tr>
+                <tr class="row-alt"><td>2</td><td>Debt Navigator — Break EMI Trap</td><td>🖼 Credit Myths (Static)</td><td>🎬 EMI Trap Story (Reel)</td></tr>
+                <tr><td>3</td><td>Debt Navigator — How It Works</td><td>📱 Step-by-Step Guide (Carousel)</td><td>🖼 Interest Priority (Static)</td></tr>
+                <tr class="row-alt"><td>4</td><td>Debt Shield — Legal Rights</td><td>🎬 Collector Harassment (Reel)</td><td>📱 6 Borrower Rights (Carousel)</td></tr>
+                <tr><td>5</td><td>Debt Shield — Legal Notices</td><td>🖼 Do/Don't Legal Notice (Static)</td><td>🎬 Bank Notice Panic (Reel)</td></tr>
+                <tr class="row-alt"><td>6</td><td>Debt Shield — Protection</td><td>📱 4 Ways We Protect (Carousel)</td><td>🖼 After 7PM Calls (Static)</td></tr>
+                <tr class="row-highlight"><td>7</td><td>Debt Coaching — One-on-One</td><td>🎬 One Call Changed All (Reel)</td><td>📱 6 Steps to Freedom (Carousel)</td></tr>
+                <tr class="row-alt"><td>8</td><td>Debt Coaching — Why Coach?</td><td>🖼 DIY vs Coaching (Static)</td><td>🎬 Drowning to Breathing (Reel)</td></tr>
+                <tr><td>9</td><td>Debt Coaching — The Process</td><td>📱 Coaching Session (Carousel)</td><td>🖼 #1 Reason Stuck (Static)</td></tr>
+                <tr class="row-alt"><td>10</td><td>Legal Consultation — Rights</td><td>🎬 Lawyer Changed Game (Reel)</td><td>📱 5 Times Need Lawyer (Carousel)</td></tr>
+                <tr><td>11</td><td>Legal — Representation</td><td>🖼 5 Rights You Didn't Know (Static)</td><td>🎬 Court Summons Story (Reel)</td></tr>
+                <tr class="row-alt"><td>12</td><td>Credit Health — Roadmap</td><td>📱 Score Rebuild Roadmap (Carousel)</td><td>🖼 Score Range Guide (Static)</td></tr>
+                <tr><td>13</td><td>Credit Health — Journey</td><td>🎬 490 to 720 Story (Reel)</td><td>📱 5 Things CredFix Does (Carousel)</td></tr>
+                <tr class="row-highlight"><td>14</td><td>All Services — Overview</td><td>🖼 All 9 Services (Static)</td><td>🎬 Before vs After (Reel)</td></tr>
+                <tr><td>15</td><td>Grand Finale — Act Now</td><td>📱 15-Day Playbook (Carousel)</td><td>🖼 Final CTA Poster (Static)</td></tr>
+            </tbody>
+        </table>
+
+        <div class="legend">
+            <div class="legend-item leg-reel">🎬 REEL — Cinematic Story (Hindi + Kannada Included)</div>
+            <div class="legend-item leg-carousel">📱 CAROUSEL — Slide-by-Slide Content</div>
+            <div class="legend-item leg-static">🖼 STATIC — Single Image Post</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="day-header">
+            <h2>DAY 1</h2>
+            <span>Debt Navigator — Know Your Debt, Own Your Plan</span>
+        </div>
+
+        <div class="post">
+            <div class="post-header reel">
+                <div class="type">POST 1 &nbsp;|&nbsp; 🎬 REEL</div>
+                <div class="title">Loan Rejected… Again! 😤 | Debt Navigator</div>
+            </div>
+            <div class="service-badge">Service: Debt Navigator</div>
+            
+            <div class="info-box">
+                <div>⏱ Duration: 20–25 sec</div>
+                <span class="highlight">Hook → Content → CTA &nbsp;|&nbsp; Cinematic Storytelling Format</span>
+            </div>
+            <div class="scene-box">📍 SCENE: Inside a bank branch. Formal cabin. @BOY sits across the manager's desk. Manager slides back a paper file.</div>
+
+            <div class="lang-title lang-en">🇬🇧 ENGLISH SCRIPT</div>
+            <div class="script-section">
+                <div class="script-header hook">🎣 HOOK (0–6s)</div>
+                <ul class="script-lines">
+                    <li>@MANAGER slides the papers back across the desk.</li>
+                    <li>@MANAGER: "Your loan application has been rejected."</li>
+                    <li>@BOY leans forward, frustrated: "Again?! This is the THIRD time. Same bank. Same answer."</li>
+                    <li>@BOY holds his head. Looks into camera: "Loan. Rejected."</li>
+                </ul>
+            </div>
+            <div class="script-section">
+                <div class="script-header content">📖 CONTENT (6–18s)</div>
+                <ul class="script-lines">
+                    <li>@BOY drops hands, looks up: "At least tell me WHY?"</li>
+                    <li>@MANAGER: "Low credit score… too many EMIs already running."</li>
+                    <li>@BOY: "Great. Problems I already know. What's the SOLUTION?"</li>
+                    <li>[Pause. @BOY stands, looks directly into camera]</li>
+                    <li>@BOY: "But wait — what if ONE app showed you exactly why your loan keeps getting rejected... and exactly how to fix it?"</li>
+                </ul>
+            </div>
+            <div class="script-section">
+                <div class="script-header cta">📣 CTA (18–25s)</div>
+                <ul class="script-lines">
+                    <li>@BOY [calm, direct]: "That's CredFix. Debt Navigator."</li>
+                    <li>"Download now. Stop guessing. Start rebuilding your score."</li>
+                    <li>[LOGO + App Store / Play Store screen appears]</li>
+                </ul>
+            </div>
+
+            <div class="lang-title lang-hi">🇮🇳 HINDI VERSION (हिंदी)</div>
+            <div class="script-section">
+                <div class="script-header hindi">🎣 HOOK — Hindi</div>
+                <ul class="script-lines">
+                    <li>@MANAGER papers wapas karta hai.</li>
+                    <li>@MANAGER: "Aapka loan reject ho gaya."</li>
+                    <li>@BOY (frustrated): "Phir se?! Teen baar ho gaya. Ek hi bank. Ek hi jawab."</li>
+                </ul>
+            </div>
+            <div class="visual-dir">🎥 Visual Direction: Warm bank interior lighting. Slow zoom on boy's face. End screen: CredFix logo + Download button graphic.</div>
+            <div class="hashtags">#CredFix #LoanRejected #DebtNavigator #CreditScore #FinancialFreedom #DebtHelp #India #PersonalFinance</div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="post">
+            <div class="post-header carousel">
+                <div class="type">POST 2 &nbsp;|&nbsp; 📱 CAROUSEL</div>
+                <div class="title">5 Signs You Urgently Need a Debt Repayment Plan</div>
+            </div>
+            <div class="service-badge">Service: Debt Navigator</div>
+            
+            <div class="carousel-note">📱 6 Slides &nbsp;|&nbsp; Ready to Design in Canva / Adobe Express</div>
+
+            <div class="slide cover">
+                <div class="slide-header">SLIDE 1 — COVER</div>
+                <div class="slide-body">🚨 Are You Trapped in Debt?
+Here Are 5 Warning Signs You Can't Ignore
+
+[CredFix Debt Navigator]</div>
+            </div>
+            <div class="slide">
+                <div class="slide-header">SLIDE 2</div>
+                <div class="slide-body">⚠️ Sign #1: You're Only Paying Minimums
+Paying only the minimum every month?
+You're barely touching the principal.
+Interest is eating you alive.</div>
+            </div>
+            <div class="slide">
+                <div class="slide-header">SLIDE 3</div>
+                <div class="slide-body">⚠️ Sign #2: Loan Gets Rejected Every Time
+Multiple rejections = your credit profile is broken.
+You need a plan, not just an application.</div>
+            </div>
+            <div class="slide cta">
+                <div class="slide-header">SLIDE 6 — CTA</div>
+                <div class="slide-body">✅ The Fix: CredFix Debt Navigator
+Personalized repayment plan
+Prioritizes high-interest & secured loans
+Step-by-step roadmap to freedom
+
+📲 Download CredFix Now</div>
+            </div>
+
+            <div class="caption-box">📝 Caption:<br>Debt is sneaky. It doesn't shout — it whispers. But these 5 signs are screaming at you. If you recognize even 2 of them, it's time to act. CredFix Debt Navigator builds your personalized repayment roadmap. 🔗 Download now — link in bio.</div>
+            <div class="hashtags">#DebtFree #DebtNavigator #CredFix #PersonalFinance #MoneyTips #LoanIndia #CreditHealth #FinancialPlanning</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="day-header">
+            <h2>DAY 2</h2>
+            <span>Debt Navigator — Break the EMI Trap</span>
+        </div>
+
+        <div class="post">
+            <div class="post-header static">
+                <div class="type">POST 3 &nbsp;|&nbsp; 🖼 STATIC</div>
+                <div class="title">Credit Score Myth vs Fact 💡</div>
+            </div>
+            <div class="service-badge">Service: Debt Navigator / Credit Health</div>
+            
+            <div class="visual-concept">🖼 Visual Concept: Split-screen: Left side RED background (MYTH), Right side GREEN background (FACT). Bold typography. CredFix branding at bottom.</div>
+
+            <div class="lang-title" style="color: var(--static-clr);">📌 Content Blocks:</div>
+            <table class="static-table">
+                <tr><td>MYTH</td><td>Checking my credit score will lower it.</td></tr>
+                <tr><td>FACT</td><td>Checking your OWN score is a soft inquiry — it NEVER affects your score.</td></tr>
+                <tr><td>MYTH</td><td>Closing old credit cards improves your score.</td></tr>
+                <tr><td>FACT</td><td>Closing old cards can HURT your score by reducing available credit.</td></tr>
+                <tr><td>MYTH</td><td>You need to carry a balance to build credit.</td></tr>
+                <tr><td>FACT</td><td>Paying in FULL every month is the best way to build credit.</td></tr>
+            </table>
+
+            <div class="caption-box">📝 Caption:<br>The lies about credit scores are costing you money. 💸 Here's the truth — straight, no filter. CredFix helps you understand exactly where you stand and what to do next. Save this post. Share it. Someone you know needs this. 📲 Download CredFix — link in bio.</div>
+            <div class="hashtags">#CreditScore #CreditMyths #FinanceTips #CredFix #DebtFree #MoneyFacts #IndiaFinance #CreditHealth</div>
+        </div>
+    </div>
+
+    <div class="page" style="background-color: var(--navy); color: var(--white); border-bottom: none;">
+        <h2 style="text-align: center; font-size: 20px;">PRODUCTION TIPS & BEST PRACTICES</h2>
+        <br>
+        
+        <h3 style="color: var(--gold); font-size: 14px; margin-bottom: 5px;">📱 REEL PRODUCTION GUIDELINES</h3>
+        <ul class="script-lines" style="color: var(--white);">
+            <li>Shoot in 9:16 vertical format (1080×1920px) for Instagram/YouTube Shorts</li>
+            <li>Keep subtitles ON — 85% of reels are watched without sound</li>
+            <li>Use jump cuts every 2-3 seconds to maintain energy</li>
+            <li>Record in good natural light or ring light — avoid shadows</li>
+            <li>Add trending background music at 20-30% volume</li>
+            <li>Always include your logo watermark in the bottom corner</li>
+            <li>Hook must appear in the FIRST 2 seconds or viewers scroll away</li>
+            <li>Film 3 takes of every scene — use the most natural one</li>
+        </ul>
+        
+        <br>
+        <h3 style="color: var(--teal); font-size: 14px; margin-bottom: 5px;">📱 CAROUSEL DESIGN GUIDELINES</h3>
+        <ul class="script-lines" style="color: var(--white);">
+            <li>Design in 1:1 square (1080×1080px) or 4:5 portrait for max reach</li>
+            <li>Slide 1 MUST stop the scroll — bold headline, strong visual</li>
+            <li>Keep each slide to ONE idea — do not overwhelm</li>
+            <li>Use consistent brand colors: CredFix Navy #0A1628, Gold #F59E0B, Blue #2563EB</li>
+            <li>End every carousel with a clear CTA slide</li>
+        </ul>
+        
+        <br>
+        <h3 style="color: var(--green); font-size: 14px; margin-bottom: 5px;">🖼 STATIC POST GUIDELINES</h3>
+        <ul class="script-lines" style="color: var(--white);">
+            <li>Size: 1080×1080px square or 1080×1350px portrait</li>
+            <li>Strong visual hierarchy: Big headline → Supporting text → CTA</li>
+            <li>Post at peak hours: 7-9 AM, 12-2 PM, 7-10 PM IST</li>
+            <li>Save-worthy content performs best — give real value</li>
+        </ul>
+
+        <hr style="border: 0; height: 1px; background: #334155; margin: 30px 0;">
+
+        <h3 style="color: var(--gold); font-size: 14px; text-align: center;">POSTING SCHEDULE RECOMMENDATION</h3>
+        <div style="text-align: center; font-size: 12px; line-height: 1.6;">
+            Post 1: 8:00 AM IST &nbsp;|&nbsp; Post 2: 7:00 PM IST<br>
+            Weekdays: Reels + Carousels &nbsp;|&nbsp; Weekends: Static + Engagement Posts<br>
+            Best days: Tuesday, Wednesday, Friday, Sunday
+        </div>
+
+        <hr style="border: 0; height: 1px; background: #334155; margin: 30px 0;">
+
+        <div style="text-align: center;">
+            <div style="color: var(--gold); font-weight: bold; font-size: 14px; margin-bottom: 8px;">CredFix Services &nbsp;|&nbsp; Your Complete Debt Resolution Partner</div>
+            <div style="color: #94A3B8; font-size: 11px;">Debt Navigator &nbsp;•&nbsp; Debt Shield &nbsp;•&nbsp; Debt Coaching &nbsp;•&nbsp; Legal Consultation &nbsp;•&nbsp; Credit Health Rebuilding</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
